@@ -54,12 +54,15 @@ class _MyHomePageState extends State<MyHomePage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Guntur2 US'),
-          automaticallyImplyLeading: false,
+          title: const Text('Http Request/response',
+              style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.blue,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              // Rest of your code remains unchanged...
+
               // All Time Great Gifts List
               AppBar(
                 title: Text('All Time Great Gifts List'),

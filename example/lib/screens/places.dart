@@ -1,6 +1,7 @@
-import 'package:Accelerite_PlugIn_Example/fordatabase/provider/user_place.dart';
-import 'package:Accelerite_PlugIn_Example/fordatabase/screens/add_placess.dart';
-import 'package:Accelerite_PlugIn_Example/fordatabase/widget/places.dart';
+import 'package:Accelerite_PlugIn_Example/provider/user_place.dart';
+import 'package:Accelerite_PlugIn_Example/screens/add_placess.dart';
+
+import 'package:Accelerite_PlugIn_Example/widget/places_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +15,7 @@ class PlacesScreen extends ConsumerStatefulWidget {
 
 class _placesScreenState extends ConsumerState<PlacesScreen> {
   late Future<void> _placesFuture;
+
   @override
   void initState() {
     super.initState();
@@ -26,7 +28,7 @@ class _placesScreenState extends ConsumerState<PlacesScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('your place'),
+        title: const Text('Your Places'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
@@ -47,7 +49,7 @@ class _placesScreenState extends ConsumerState<PlacesScreen> {
           builder: (context, snapshot) =>
               snapshot.connectionState == ConnectionState.waiting
                   ? const Center(child: CircularProgressIndicator())
-                  : placesList(places: userplaces),
+                  : PlacesList(places: userplaces),
         ),
       ),
     );

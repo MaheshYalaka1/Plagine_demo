@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:Accelerite_PlugIn_Example/fordatabase/provider/user_place.dart';
-import 'package:Accelerite_PlugIn_Example/fordatabase/widget/image_input.dart';
+import 'package:Accelerite_PlugIn_Example/provider/user_place.dart';
+import 'package:Accelerite_PlugIn_Example/widget/image_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -48,8 +48,8 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreenState> {
             TextField(
               decoration: const InputDecoration(labelText: 'Titel'),
               controller: _titleController,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground,
+              style: const TextStyle(
+                color: Color.fromARGB(255, 16, 9, 9),
               ),
             ),
             const SizedBox(

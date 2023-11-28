@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'package:Accelerite_PlugIn_Example/fordatabase/modal/newplace.dart';
+import 'dart:async';
+import 'package:Accelerite_PlugIn_Example/modal/newplace.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart' as syspaths;
 
@@ -53,7 +54,48 @@ class UesrPlaceNotifier extends StateNotifier<List<Place>> {
       'title': newplace.title,
       'image': newplace.image.path,
     });
+
     state = [newplace, ...state];
+  }
+
+  void deletePlace(String id) async {
+    final db = await _getDatabase();
+
+    await db.delete(
+      'user_plagine',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    state = state.where((place) => place.id != id).toList();
+  }
+
+  void updatePlace(String id, String newTitle, File newImage) async {
+    final appDir = await syspaths.getApplicationDocumentsDirectory();
+    final filename = path.basename(newImage.path);
+    final copiedImage = await newImage.copy('${appDir.path}/$filename');
+
+    final updatedPlace = Place(
+      id: id,
+      title: newTitle,
+      image: copiedImage,
+    );
+
+    final db = await _getDatabase();
+
+    await db.update(
+      'user_plagine',
+      {
+        'title': updatedPlace.title,
+        'image': updatedPlace.image.path,
+      },
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    state = state.map((place) {
+      return place.id == id ? updatedPlace : place;
+    }).toList();
   }
 }
 

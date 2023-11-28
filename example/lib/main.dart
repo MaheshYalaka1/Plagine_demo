@@ -1,31 +1,33 @@
-import 'package:Accelerite_PlugIn_Example/fordatabase/screens/places.dart';
+import 'package:Accelerite_PlugIn_Example/screens/places.dart';
 import 'package:Accelerite_PlugIn_Example/products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-final colorScheme = ColorScheme.fromSeed(
-  brightness: Brightness.dark,
-  seedColor: const Color.fromARGB(2, 246, 245, 249),
-  background: Colors.white, // Set background color to white
-);
+// final colorScheme = ColorScheme.fromSeed(
+//   brightness: Brightness.dark,
+//   seedColor: Color.fromARGB(242, 3, 0, 13),
+//   background: Color.fromRGBO(255, 255, 255, 1), // Set background color to white
+// );
 
-final Theme = ThemeData().copyWith(
-  useMaterial3: true,
-  scaffoldBackgroundColor: colorScheme.background,
-  colorScheme: colorScheme,
-  textTheme: GoogleFonts.ubuntuCondensedTextTheme().copyWith(
-    titleSmall: GoogleFonts.ubuntuCondensed(
-      fontWeight: FontWeight.bold,
-    ),
-    titleMedium: GoogleFonts.ubuntuCondensed(
-      fontWeight: FontWeight.bold,
-    ),
-    titleLarge: GoogleFonts.ubuntuCondensed(
-      fontWeight: FontWeight.bold,
-    ),
-  ),
-);
+// final Theme = ThemeData().copyWith(
+//   useMaterial3: true,
+//   scaffoldBackgroundColor: colorScheme.background,
+//   colorScheme: colorScheme,
+//   textTheme: GoogleFonts.ubuntuCondensedTextTheme().copyWith(
+//     titleSmall: GoogleFonts.ubuntuCondensed(
+//       fontWeight: FontWeight.bold,
+//       color: Colors.black, // Set text color to black
+//     ),
+//     titleMedium: GoogleFonts.ubuntuCondensed(
+//       fontWeight: FontWeight.bold,
+//       color: Colors.black, // Set text color to black
+//     ),
+//     titleLarge: GoogleFonts.ubuntuCondensed(
+//       fontWeight: FontWeight.bold,
+//       color: Colors.black, // Set text color to black
+//     ),
+//   ),
+// );
 
 void main() {
   runApp(
@@ -41,10 +43,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "My Place",
-      theme: Theme,
+      //theme: Theme,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Dash Board"),
+          title: const Text("DashBoard", style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.blue, // Set background color to white
         ),
         body: const MyGridView(),
       ),
@@ -58,6 +61,7 @@ class MyGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
+      padding: const EdgeInsets.all(8.0),
       crossAxisCount: 2,
       crossAxisSpacing: 8.0,
       mainAxisSpacing: 8.0,
@@ -98,18 +102,12 @@ class Container1 extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/products.png', // Replace with your image path
-              width: 80.0,
-              height: 80.0,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 8.0),
-            const Text(
-              'Products',
+            SizedBox(height: 8.0),
+            Text(
+              'Http Req/Res',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -148,18 +146,12 @@ class Container2 extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/place.jpg', // Replace with your image path
-              width: 80.0,
-              height: 80.0,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 8.0),
-            const Text(
-              'Store Places',
+            SizedBox(height: 8.0),
+            Text(
+              'Store Data',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -193,18 +185,12 @@ class Container3 extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/chat.png', // Replace with your image path
-              width: 80.0,
-              height: 80.0,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 8.0),
-            const Text(
-              'PushNotify ',
+            SizedBox(height: 8.0),
+            Text(
+              'Push Notifications ',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -240,17 +226,11 @@ class Container4 extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/service.jpg', // Replace with your image path
-              width: 80.0,
-              height: 80.0,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 8.0),
-            const Text(
+            SizedBox(height: 8.0),
+            Text(
               'Service 4',
               style: TextStyle(
                 color: Colors.white,
@@ -287,17 +267,11 @@ class Container5 extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/service.jpg', // Replace with your image path
-              width: 80.0,
-              height: 80.0,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 8.0),
-            const Text(
+            SizedBox(height: 8.0),
+            Text(
               'Service 5',
               style: TextStyle(
                 color: Colors.white,
@@ -324,7 +298,7 @@ class Container6 extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),
-          color: Color.fromARGB(255, 36, 246, 8),
+          color: Color.fromARGB(255, 246, 8, 234),
           boxShadow: [
             BoxShadow(
               color: const Color.fromARGB(0, 0, 0, 0).withOpacity(0.2),
@@ -334,17 +308,11 @@ class Container6 extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/service.jpg', // Replace with your image path
-              width: 80.0,
-              height: 80.0,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 8.0),
-            const Text(
+            SizedBox(height: 8.0),
+            Text(
               'Service 6',
               style: TextStyle(
                 color: Colors.white,
